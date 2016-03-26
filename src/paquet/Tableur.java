@@ -1,3 +1,5 @@
+package paquet;
+
 
 
 import javax.swing.JFrame;
@@ -17,10 +19,10 @@ public class Tableur extends JFrame implements TableModelListener {
 
 	public Tableur() { 
 		tableur = new  DefaultTableModel();
-		tableur.addColumn("fichier");
 		tableur.addColumn("dossier");
+		tableur.addColumn("fichier");
 		
-		tableur.setRowCount(10);
+		tableur.setRowCount(50);
 
 		table = new JTable(tableur);
 		table.setPreferredScrollableViewportSize(new Dimension(300, 200));
@@ -49,4 +51,3 @@ public class Tableur extends JFrame implements TableModelListener {
 	
 
 } 
-
