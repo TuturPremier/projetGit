@@ -3,10 +3,11 @@ package paquet;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
 public class Lanceur {
+
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		JFileChooser dialogue = new JFileChooser(new File("Users"));
 		String chemin = null;
 		File fichier;
@@ -20,10 +21,11 @@ public class Lanceur {
 			
 		}
 		recupChemin[0]=recupChemin[0]+"/.git/objects";
-		
+		//recupChemin[0]=recupChemin[0]+"/test";
 		
 		Rechercher finder = new Rechercher();
 		finder.findFiles(recupChemin[0]);
+
 	}
+
 }
-///   copier-coller ce chemin     Users/theodelorme/projetGit/.git/objects
