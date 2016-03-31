@@ -10,6 +10,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
+
+
 public class Tableur extends JFrame implements TableModelListener {
 	JTable table;
 	DefaultTableModel tableur;

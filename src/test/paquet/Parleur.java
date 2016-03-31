@@ -7,11 +7,35 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+class AfficheurFlux implements Runnable {
 
+	private final InputStream inputStream;
 
-public class Rechercher extends Tableur {
+	AfficheurFlux(InputStream inputStream) {
+		this.inputStream = inputStream;
+	}
 
-	public Rechercher(){
+	private BufferedReader getBufferedReader(InputStream is) {
+		return new BufferedReader(new InputStreamReader(is));
+	}
+
+	@Override
+	public void run() {
+		BufferedReader br = getBufferedReader(inputStream);
+		String ligne = "";
+		try {
+			while ((ligne = br.readLine()) != null) {
+				System.out.println(ligne);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+public class Parleur extends Tableur {
+
+	public Parleur(){
 		super();
 	}
 	public  void findFiles(String directoryPath) {
@@ -35,22 +59,15 @@ public class Rechercher extends Tableur {
 
 
 				try {
-					String[] commande = {"./interpreteur.sh", cleff};
-					
+					String[] commande = {"./interpreteur.sh", "827e"};
 					Process p = Runtime.getRuntime().exec(commande);
-					
 					AfficheurFlux fluxSortie = new AfficheurFlux(p.getInputStream());
-					
 					AfficheurFlux fluxErreur = new AfficheurFlux(p.getErrorStream());
-					
 
 					new Thread(fluxSortie).start();
 					new Thread(fluxErreur).start();
-					
-					
-					int truc=p.waitFor();
-					System.out.println("aaaaa"+p);
-					tableur.setValueAt(truc, aligneur, 2);
+
+					p.waitFor();
 				} catch (IOException e) {
 					e.printStackTrace();
 				} catch (InterruptedException e) {
@@ -58,7 +75,7 @@ public class Rechercher extends Tableur {
 				}
 
 
-				
+				tableur.setValueAt(cleff, aligneur, 2);
 				aligneur++;
 			}
 
