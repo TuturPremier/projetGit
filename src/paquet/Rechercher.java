@@ -21,7 +21,6 @@ public class Rechercher extends Tableur {
 		File[] fichier = directory.listFiles();
 
 		int aligneur=0;
-		String creat="0";
 
 		for(int i=0 ; i<fichier.length; i++){
 			File[] interfichier = fichier[i].listFiles();
@@ -35,11 +34,11 @@ public class Rechercher extends Tableur {
 				cleff=fichier[i].getName()+interfichier[j].getName();
 
 				tableur.setValueAt(interfichier[j].getName(), aligneur, 1);
+				tableur.setValueAt(cleff, aligneur, 2);
 
 
 				try {
-					String[] commande = {"./interpreteur.sh", cleff, creat};
-					creat="2";
+					String[] commande = {"./interpreteur.sh", cleff};
 
 					Process p = Runtime.getRuntime().exec(commande);
 
@@ -54,7 +53,6 @@ public class Rechercher extends Tableur {
 
 					p.waitFor();
 					
-					//System.out.println("aaaaa"+p);
 					
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -62,12 +60,25 @@ public class Rechercher extends Tableur {
 					e.printStackTrace();
 				}
 				
-				File f= new File("blabla.txt");
+				File f= new File("ObjectType");
 				try {
 					FileReader fr= new FileReader(f);
 					try {
-						char c= (char) fr.read();
-						tableur.setValueAt(c, aligneur, 2);
+						int c =fr.read();
+						
+						if(c==98){
+							tableur.setValueAt("blob", aligneur, 3);
+						}
+						else if(c==99){
+							tableur.setValueAt("commit", aligneur, 3);
+						}
+						else if(c==116){
+							tableur.setValueAt("tree", aligneur, 3);
+						}
+						
+						fr.close();
+						
+						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -76,6 +87,7 @@ public class Rechercher extends Tableur {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 
 
 				
