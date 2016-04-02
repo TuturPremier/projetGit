@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 public class Tableur extends JFrame implements TableModelListener {
 	JTable table;
 	DefaultTableModel tableur;
+	
+	
 
 	public Tableur() { 
 		tableur = new  DefaultTableModel();
@@ -22,7 +24,7 @@ public class Tableur extends JFrame implements TableModelListener {
 		tableur.addColumn("FICHIER");
 		tableur.addColumn("CLEF");
 		
-		tableur.setRowCount(50);
+		tableur.setRowCount(500);
 
 		table = new JTable(tableur);
 		table.setPreferredScrollableViewportSize(new Dimension(1000, 500));
