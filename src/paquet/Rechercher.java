@@ -1,13 +1,11 @@
 package paquet;
 
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import	paquet.Tableur;
 
 
 
@@ -16,7 +14,7 @@ public class Rechercher extends Tableur {
 	public Rechercher(){
 		super();
 	}
-	public  void findFiles(String directoryPath) {
+	public  void rechercheFichier(String directoryPath) {
 		File directory = new File(directoryPath);
 		File[] fichier = directory.listFiles();
 
