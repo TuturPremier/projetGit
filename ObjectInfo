@@ -1,6 +1,3 @@
-tree 7023f10f68f587e5ef1cc0cad84363ce2df51249
-parent db074826f13225beb7ba549350256d545bd6bed5
-author TuturPremier <theo.delorme@etud.univ-jfc.fr> 1459436196 +0200
-committer TuturPremier <theo.delorme@etud.univ-jfc.fr> 1459436196 +0200
-
-lecture du type
+100644 blob 8bf46154fe5c5d65679be937c8b4dff06628a1db	.project
+100644 blob 3f6d57d3ec966ef50f9ff624f4807f03197309a5	README.md
+040000 tree ce4eb84aaa0a182176ed19bc40c1d2004ffa85fc	src

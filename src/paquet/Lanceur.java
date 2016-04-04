@@ -10,8 +10,8 @@ public class Lanceur extends JFrame {
 	public static void main(String[] args) {
 
 		
-		Tableur Fenetre = new Tableur();
-    
+		//Tableur Fenetre = new Tableur();
+		GlobalConsoleFrame test = new GlobalConsoleFrame(); 
 		
 		
 	}

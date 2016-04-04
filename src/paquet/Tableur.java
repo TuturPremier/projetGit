@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -28,33 +27,34 @@ public class Tableur extends JFrame{
 
 	public Tableur() { 
 		tableur = new  DefaultTableModel();
-		
-		
+
+
 		tableur.addColumn("DOSSIER");
 		tableur.addColumn("FICHIER");
 		tableur.addColumn("CLEF");
 		tableur.addColumn("TYPE");
-		
+
 		tableur.setRowCount(500);
 
 		table = new JTable(tableur);
 		table.setPreferredScrollableViewportSize(new Dimension(840, 500));
 		add(new JScrollPane(table), BorderLayout.CENTER);
-		
+
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) { 
 				int ligne=event.getY()/20;
 				System.out.println(ligne);
 				String a=(String) tableur.getValueAt( ligne, 2);
-				Info p=new Info(a);
-				
-				
-				
+				String b=(String) tableur.getValueAt( ligne, 3);
+				Info p=new Info(a,b);
+
+
+
 			} });
-		
-		
-		
-        
+
+
+
+
 		javax.swing.table.TableColumnModel lModel = table.getColumnModel();
 		table.setRowHeight( 20 );
 
@@ -62,10 +62,10 @@ public class Tableur extends JFrame{
 		lModel.getColumn(1).setMaxWidth(350);
 		lModel.getColumn(2).setMaxWidth(350);
 		lModel.getColumn(3).setMaxWidth(70);
-		
-		
 
-		
+
+
+
 		this.test1.add(item1);
 		this.test1.add(item2);
 
@@ -86,32 +86,31 @@ public class Tableur extends JFrame{
 
 				Rechercher finder = new Rechercher();
 				finder.rechercheFichier(recupChemin[0]);
-				
-				
+
+
 				setVisible(false);
 
 			}        
 		});
-		item1.addActionListener(new ActionListener(){
+		item2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				setDefaultCloseOperation(0);
+				System.exit(0);
 
 			}        
 		});
-		
+
 		this.menuBar.add(test1);
 
 		this.setJMenuBar(menuBar);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocation(20, 30);
-		
+		setLocation(300, 120);
+
 		pack(); 
 		setVisible(true); 
 		////////////////////////////////////////////////////////////////////
-			
+
 	}
 
 
 	
-
 }

@@ -58,7 +58,7 @@ public class Rechercher extends Tableur {
 					e.printStackTrace();
 				}
 				
-				File f= new File("ObjectType");
+				File f= new File("RecupCommande");
 				try {
 					FileReader fr= new FileReader(f);
 					try {

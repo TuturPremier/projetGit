@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 public class Info {
-	public Info(String ligne){
+	public Info(String ligne, String type){
 		String resultat= new String();
 		
 		try {
@@ -34,7 +34,7 @@ public class Info {
 			e.printStackTrace();
 		}
 		
-		File f= new File("ObjectInfo");
+		File f= new File("RecupCommande");
 		try {
 			FileReader fr= new FileReader(f);
 			try {
@@ -69,7 +69,7 @@ public class Info {
 		JOptionPane jop1;
 		//Boîte du message d'information
 		jop1 = new JOptionPane();
-		jop1.showMessageDialog(null, resultat, "Information", JOptionPane.PLAIN_MESSAGE);
+		jop1.showMessageDialog(null, resultat, "Information>>>"+type, JOptionPane.PLAIN_MESSAGE);
 	}
 
 }

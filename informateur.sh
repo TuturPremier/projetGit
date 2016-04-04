@@ -1,5 +1,5 @@
 #!/bin/bash
 
 
-touch ObjectInfo
-git cat-file -p $1 > ObjectInfo
+touch RecupCommande
+git cat-file -p $1 > RecupCommande
