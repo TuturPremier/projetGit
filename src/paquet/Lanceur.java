@@ -11,7 +11,7 @@ public class Lanceur extends JFrame {
 
 		
 		//Tableur Fenetre = new Tableur();
-		GlobalConsoleFrame test = new GlobalConsoleFrame(); 
+		FenPrem test = new FenPrem(); 
 		
 		
 	}
