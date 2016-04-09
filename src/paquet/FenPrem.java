@@ -30,13 +30,13 @@ public class FenPrem extends JFrame {
 	public FenPrem() {
 		// TODO Auto-generated constructor stub
 		
-		this.JOuvrir.add(ILinux);
-		this.JOuvrir.add(IWindows);
-		this.JFichier.add(this.JOuvrir);
-		this.menuBar.add(JFichier);
-		this.JPropos.add(IPropos);
-		this.menuBar.add(JPropos);
-		this.setJMenuBar(menuBar);
+		JOuvrir.add(ILinux);
+		JOuvrir.add(IWindows);
+		JFichier.add(JOuvrir);
+		menuBar.add(JFichier);
+		JPropos.add(IPropos);
+		menuBar.add(JPropos);
+		setJMenuBar(menuBar);
 		
 		
 		this.JFichier.add(IQuitter);

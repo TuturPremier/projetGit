@@ -27,6 +27,9 @@ public class Tableur extends JFrame{
 	private JMenuItem ILinux = new JMenuItem("Linux/Mac.OS");
 	private JMenuItem IWindows = new JMenuItem("Windows");
 	private JMenuItem IQuitter = new JMenuItem("Quitter");
+	
+	private JMenu JPropos = new JMenu("A propos");
+	private JMenuItem IPropos = new JMenuItem("?");
 
 	public Tableur() { 
 		tableur = new  DefaultTableModel();
@@ -62,6 +65,8 @@ public class Tableur extends JFrame{
 		this.JOuvrir.add(ILinux);
 		this.JOuvrir.add(IWindows);
 		this.menuBar.add(JFichier);
+		JPropos.add(IPropos);
+		menuBar.add(JPropos);
 		this.setJMenuBar(menuBar);
 		this.JFichier.add(this.JOuvrir);
 		
