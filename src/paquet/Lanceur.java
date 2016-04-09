@@ -1,7 +1,6 @@
 package paquet;
 
-import javax.swing.JFrame;
-import paquet.Tableur;;
+import javax.swing.JFrame;;
 
 
 public class Lanceur extends JFrame {

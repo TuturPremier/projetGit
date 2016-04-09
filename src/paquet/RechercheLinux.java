@@ -1,6 +1,8 @@
 package paquet;
 
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,9 +11,9 @@ import	paquet.Tableur;
 
 
 
-public class Rechercher extends Tableur {
+public class RechercheLinux extends Tableur {
 
-	public Rechercher(){
+	public RechercheLinux(){
 		super();
 	}
 	public  void rechercheFichier(String directoryPath) {
@@ -93,6 +95,16 @@ public class Rechercher extends Tableur {
 			}
 
 		}
+		
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent event) { 
+				int ligne=event.getY()/20;
+				System.out.println(ligne);
+				String a=(String) tableur.getValueAt( ligne, 2);
+				String b=(String) tableur.getValueAt( ligne, 3);
+				new Info(a,b);
+
+			} });
 	}
 
 

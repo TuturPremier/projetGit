@@ -4,9 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -18,12 +18,15 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class Tableur extends JFrame{
+	
 	JTable table;
 	DefaultTableModel tableur;
 	private JMenuBar menuBar = new JMenuBar();
-	private JMenu test1 = new JMenu("Fichier");
-	private JMenuItem item1 = new JMenuItem("Ouvrir");
-	private JMenuItem item2 = new JMenuItem("Quitter");
+	private JMenu JFichier = new JMenu("Fichier");
+	private JMenu JOuvrir = new JMenu("Ouvrir sous");
+	private JMenuItem ILinux = new JMenuItem("Linux/Mac.OS");
+	private JMenuItem IWindows = new JMenuItem("Windows");
+	private JMenuItem IQuitter = new JMenuItem("Quitter");
 
 	public Tableur() { 
 		tableur = new  DefaultTableModel();
@@ -40,17 +43,7 @@ public class Tableur extends JFrame{
 		table.setPreferredScrollableViewportSize(new Dimension(840, 500));
 		add(new JScrollPane(table), BorderLayout.CENTER);
 
-		table.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent event) { 
-				int ligne=event.getY()/20;
-				System.out.println(ligne);
-				String a=(String) tableur.getValueAt( ligne, 2);
-				String b=(String) tableur.getValueAt( ligne, 3);
-				Info p=new Info(a,b);
-
-
-
-			} });
+		
 
 
 
@@ -66,10 +59,15 @@ public class Tableur extends JFrame{
 
 
 
-		this.test1.add(item1);
-		this.test1.add(item2);
+		this.JOuvrir.add(ILinux);
+		this.JOuvrir.add(IWindows);
+		this.menuBar.add(JFichier);
+		this.setJMenuBar(menuBar);
+		this.JFichier.add(this.JOuvrir);
+		
+		this.JFichier.add(IQuitter);
 
-		item1.addActionListener(new ActionListener(){
+		ILinux.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser dialogue = new JFileChooser(new File("Users"));
 				String chemin = null;
@@ -84,7 +82,7 @@ public class Tableur extends JFrame{
 				}
 				recupChemin[0]=recupChemin[0]+"/.git/objects";
 
-				Rechercher finder = new Rechercher();
+				RechercheLinux finder = new RechercheLinux();
 				finder.rechercheFichier(recupChemin[0]);
 
 
@@ -92,16 +90,43 @@ public class Tableur extends JFrame{
 
 			}        
 		});
-		item2.addActionListener(new ActionListener(){
+		
+		IWindows.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser dialogue = new JFileChooser(new File("Users"));
+				String chemin = null;
+				File fichier;
+				String[] recupChemin = null;
+
+				if (dialogue.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
+					fichier = dialogue.getSelectedFile();
+					chemin = fichier.getPath();
+					recupChemin = chemin.split("clique ici");
+
+				}
+				setVisible(false);
+				recupChemin[0]=recupChemin[0]+"/.git/objects";
+
+				RechercherWindows finder = new RechercherWindows();
+				try {
+					finder.rechercheFichier(recupChemin[0]);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}        
+		});
+		
+		
+		IQuitter.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 
 			}        
 		});
 
-		this.menuBar.add(test1);
-
-		this.setJMenuBar(menuBar);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocation(300, 120);
 
