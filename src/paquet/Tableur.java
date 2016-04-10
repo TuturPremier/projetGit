@@ -24,7 +24,7 @@ public class Tableur extends JFrame{
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu JFichier = new JMenu("Fichier");
 	private JMenu JOuvrir = new JMenu("Ouvrir sous");
-	private JMenuItem ILinux = new JMenuItem("Linux/Mac.OS");
+	private JMenuItem ILinux = new JMenuItem("Linux/Mac OS");
 	private JMenuItem IWindows = new JMenuItem("Windows");
 	private JMenuItem IQuitter = new JMenuItem("Quitter");
 	

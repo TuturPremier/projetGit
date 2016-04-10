@@ -22,7 +22,7 @@ public class FenPrem extends JFrame {
 	
 	private JMenu JOuvrir = new JMenu("Ouvrir sous");
 	private JMenu JPropos = new JMenu("A propos");
-	private JMenuItem ILinux = new JMenuItem("Linux/Mac.OS");
+	private JMenuItem ILinux = new JMenuItem("Linux/Mac OS");
 	private JMenuItem IWindows = new JMenuItem("Windows");
 	private JMenuItem IQuitter = new JMenuItem("Quitter");
 	private JMenuItem IPropos = new JMenuItem("?");
