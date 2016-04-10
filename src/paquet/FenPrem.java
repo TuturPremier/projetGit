@@ -98,6 +98,13 @@ public class FenPrem extends JFrame {
 
 			}        
 		});
+		
+		IPropos.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				new APropos();
+
+			}        
+		});
 
 		setSize(860, 560); 
 		setLocation(300, 100);

@@ -124,6 +124,14 @@ public class Tableur extends JFrame{
 		});
 		
 		
+		IPropos.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				new APropos();
+
+			}        
+		});
+		
+		
 		IQuitter.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
