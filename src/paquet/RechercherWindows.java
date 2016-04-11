@@ -65,13 +65,13 @@ public class RechercherWindows extends Tableur {
 					content.append(c);
 					i1++;
 				}
-				System.out.println(content);
+				
 				String[] z=content.toString().split(" ");
 
 				/////////////////////////////////////////////////////////////////
 				tableur.setValueAt(z[0], aligneur, 3);
 
-				System.out.println(z[0]);
+				
 				aligneur++;
 			}
 
@@ -81,8 +81,8 @@ public class RechercherWindows extends Tableur {
 			public void mouseClicked(MouseEvent event) { 
 				int ligne=event.getY()/20;
 				
-				String a=(String) tableur.getValueAt( ligne, 2);
-				File file= new File(a);
+				File file=(File) tableur.getValueAt( ligne, 2);
+				
 				
 				FileInputStream fichier1 = null;
 				try {
@@ -122,13 +122,13 @@ public class RechercherWindows extends Tableur {
 					content.append(c);
 					i1++;
 				}
-				System.out.println(content);
+				
+				
 
 				JOptionPane jop1;
 				//Boîte du message d'information
 				jop1 = new JOptionPane();
 				jop1.showMessageDialog(null, content, "Information>>>", JOptionPane.PLAIN_MESSAGE);
-				
 
 			} });
 
