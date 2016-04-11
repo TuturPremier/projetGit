@@ -18,4 +18,4 @@ Sous Windows: Nous avons utilisé la decompression pour lire le type des Objects
 
 Sous Linux/Mac OS: Nous avons préféré utiliser des lignes de commande/script exécuté dans notre programme 
 	 pour voir le type mais également les informations des Objects. Cette méthode c’est décidée par rapport
-	 aux cours de système où nous avons appris à écrire des scripts .
+	 aux cours de système où nous avons appris à écrire des scripts  .
