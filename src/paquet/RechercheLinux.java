@@ -99,7 +99,6 @@ public class RechercheLinux extends Tableur {
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) { 
 				int ligne=event.getY()/20;
-				System.out.println(ligne);
 				String a=(String) tableur.getValueAt( ligne, 2);
 				String b=(String) tableur.getValueAt( ligne, 3);
 				new Info(a,b);

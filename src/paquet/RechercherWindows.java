@@ -1,10 +1,15 @@
 package paquet;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.zip.InflaterInputStream;;
+import java.util.zip.InflaterInputStream;
+
+import javax.swing.JOptionPane;;
 
 public class RechercherWindows extends Tableur {
 	public RechercherWindows(){
@@ -16,7 +21,7 @@ public class RechercherWindows extends Tableur {
 
 		int aligneur=0;
 
-		for(int i=0 ; i<fichier.length; i++){
+		for(int i=0 ; i<fichier.length-1; i++){
 			File[] interfichier = fichier[i].listFiles();
 			tableur.setValueAt(fichier[i].getName(), aligneur, 0);
 
@@ -26,14 +31,14 @@ public class RechercherWindows extends Tableur {
 				String cleff;
 
 				cleff=fichier[i].getName()+interfichier[j].getName();
-				File chacha= new File(interfichier[j].getPath());
+				File file= new File(interfichier[j].getPath());
 
 				tableur.setValueAt(interfichier[j].getName(), aligneur, 1);
-				tableur.setValueAt(cleff, aligneur, 2);
+				tableur.setValueAt(file, aligneur, 2);
 
-				
+
 				/////////////////////////////////////////////////////////////////////
-				FileInputStream fichier1 = new FileInputStream(chacha);
+				FileInputStream fichier1 = new FileInputStream(file);
 
 				InflaterInputStream decompresser = new InflaterInputStream(fichier1);
 
@@ -46,7 +51,7 @@ public class RechercherWindows extends Tableur {
 					}
 				}
 				catch(IOException e) {
-					throw new IOException("fichier "+chacha.getName()+" : "+e.getMessage());
+					throw new IOException("fichier "+file.getName()+" : "+e.getMessage());
 				}
 
 				Byte[] coder=LectureFichier.toArray(new Byte[0]); 
@@ -60,17 +65,73 @@ public class RechercherWindows extends Tableur {
 					content.append(c);
 					i1++;
 				}
+				System.out.println(content);
 				String[] z=content.toString().split(" ");
-				
+
 				/////////////////////////////////////////////////////////////////
 				tableur.setValueAt(z[0], aligneur, 3);
 
-
+				System.out.println(z[0]);
 				aligneur++;
 			}
 
 		}
-		
+
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent event) { 
+				int ligne=event.getY()/20;
+				
+				String a=(String) tableur.getValueAt( ligne, 2);
+				File file= new File(a);
+				
+				FileInputStream fichier1 = null;
+				try {
+					fichier1 = new FileInputStream(file);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				InflaterInputStream decompresser = new InflaterInputStream(fichier1);
+
+				ArrayList<Byte> LectureFichier = new ArrayList();
+				int caract;
+
+				try {
+					while((caract = decompresser.read()) != -1){
+						LectureFichier.add( (byte)caract );
+					}
+				}
+				catch(IOException e) {
+					try {
+						throw new IOException("fichier "+file.getName()+" : "+e.getMessage());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+
+				Byte[] coder=LectureFichier.toArray(new Byte[0]); 
+				StringBuilder content = new StringBuilder();
+
+				int i1 = 0;
+				char c;
+				while(i1 < coder.length) {
+
+					c = (char)coder[i1].byteValue();
+					content.append(c);
+					i1++;
+				}
+				System.out.println(content);
+
+				JOptionPane jop1;
+				//Boîte du message d'information
+				jop1 = new JOptionPane();
+				jop1.showMessageDialog(null, content, "Information>>>", JOptionPane.PLAIN_MESSAGE);
+				
+
+			} });
+
 	}
 
 }
