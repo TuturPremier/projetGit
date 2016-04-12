@@ -22,17 +22,15 @@ public class FenPrem extends JFrame {
 	
 	private JMenu JOuvrir = new JMenu("Ouvrir sous");
 	private JMenu JPropos = new JMenu("A propos");
-	private JMenuItem ILinux = new JMenuItem("Linux/Mac OS");
-	private JMenuItem IWindows = new JMenuItem("Windows");
+	private JMenuItem IOuvrir = new JMenuItem("Ouvrir");
 	private JMenuItem IQuitter = new JMenuItem("Quitter");
 	private JMenuItem IPropos = new JMenuItem("?");
 
 	public FenPrem() {
 		// TODO Auto-generated constructor stub
 		
-		JOuvrir.add(ILinux);
-		JOuvrir.add(IWindows);
-		JFichier.add(JOuvrir);
+		
+		JFichier.add(IOuvrir);
 		menuBar.add(JFichier);
 		JPropos.add(IPropos);
 		menuBar.add(JPropos);
@@ -41,30 +39,12 @@ public class FenPrem extends JFrame {
 		
 		this.JFichier.add(IQuitter);
 
-		ILinux.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser dialogue = new JFileChooser(new File("Users"));
-				String chemin = null;
-				File fichier;
-				String[] recupChemin = null;
-
-				if (dialogue.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
-					fichier = dialogue.getSelectedFile();
-					chemin = fichier.getPath();
-					recupChemin = chemin.split("clique ici");
-
-				}
-				setVisible(false);
-				recupChemin[0]=recupChemin[0]+"/.git/objects";
-
-				RechercheLinux finder = new RechercheLinux();
-				finder.rechercheFichier(recupChemin[0]);
-
-			}        
-		});
 		
 		
-		IWindows.addActionListener(new ActionListener(){
+		
+		IOuvrir.addActionListener(new ActionListener(){
+			
+			//permet l'ouverture d'un fichier mais avec Windows car méthode differente
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser dialogue = new JFileChooser(new File("."));
 				String chemin = null;
@@ -80,7 +60,7 @@ public class FenPrem extends JFrame {
 				setVisible(false);
 				recupChemin[0]=recupChemin[0]+"/.git/objects";
 
-				RechercherWindows finder = new RechercherWindows();
+				Rechercher finder = new Rechercher();
 				try {
 					finder.rechercheFichier(recupChemin[0]);
 				} catch (IOException e) {

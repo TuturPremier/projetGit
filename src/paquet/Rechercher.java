@@ -11,8 +11,8 @@ import java.util.zip.InflaterInputStream;
 
 import javax.swing.JOptionPane;;
 
-public class RechercherWindows extends Tableur {
-	public RechercherWindows(){
+public class Rechercher extends Tableur {
+	public Rechercher(){
 		super();
 	}
 	public  void rechercheFichier(String directoryPath) throws IOException {
@@ -36,7 +36,7 @@ public class RechercherWindows extends Tableur {
 				tableur.setValueAt(interfichier[j].getName(), aligneur, 1);
 				tableur.setValueAt(file, aligneur, 2);
 
-
+				//decompression et remplisage de la table (colone 2 et 3)
 				/////////////////////////////////////////////////////////////////////
 				FileInputStream fichier1 = new FileInputStream(file);
 
@@ -78,6 +78,9 @@ public class RechercherWindows extends Tableur {
 		}
 
 		table.addMouseListener(new MouseAdapter() {
+			
+			//decompression egalement par rapport a la colonne 2 
+			
 			public void mouseClicked(MouseEvent event) { 
 				int ligne=event.getY()/20;
 				

@@ -5,17 +5,19 @@
 INSTRUCTION
 
 1° Assurez vous qu’il y ait bien un fichier « clique ici » a la racine du GIT.
-2° Sélectionner le bon système d’exploitation pour ouvrir (Car ce n’est pas la meme méthode).
-3° Lors de la recherche du repertoire GIT veuillez ouvrir « cliquez ici ».
-4° Sous Linux/Mac OS, lors d’un clic sur un Object une fenêtre d’information s’ouvre.
+2° Lors de la recherche du repertoire GIT veuillez ouvrir « cliquez ici ».
+3° Cliquez sur une ligne pour afficher les informations.
+
 
 
 PARTICULARITE
 
-Nous avons choisi d’utiliser deux méthodes pour réaliser se projet:
+Nous avions choisi d’utiliser deux méthodes pour réaliser se projet:
 
-Sous Windows: Nous avons utilisé la decompression pour lire le type des Objects.
+1) celle que nous utilisons dans ce projet est la Decompression
+2) La seconde etait Les lignes de commande utilisable que sur Mac et Linux.
 
-Sous Linux/Mac OS: Nous avons préféré utiliser des lignes de commande/script exécuté dans notre programme 
-	 pour voir le type mais également les informations des Objects. Cette méthode c’est décidée par rapport
-	 aux cours de système où nous avons appris à écrire des scripts  .
+Nous avons annulé les lignes de commande pour eviter à l'utilisateur de choisir son systeme et ainsi faire 
+fonctionner le programme sans devoir prendre en compte le systeme d'exploitation.
+Donc nous avons annulé une contrainte
+ .

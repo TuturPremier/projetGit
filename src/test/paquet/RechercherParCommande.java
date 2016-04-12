@@ -11,9 +11,9 @@ import	paquet.Tableur;
 
 
 
-public class RechercheLinux extends Tableur {
+public class RechercherParCommande extends Tableur {
 
-	public RechercheLinux(){
+	public RechercherParCommande(){
 		super();
 	}
 	public  void rechercheFichier(String directoryPath) {
