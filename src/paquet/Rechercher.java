@@ -66,7 +66,7 @@ public class Rechercher extends Tableur {
 					i1++;
 				}
 				
-				String[] z=content.toString().split(" ");
+				String[] z=content.toString().split(" ");//permet de recuper le premier mot qui correspont au type
 
 				/////////////////////////////////////////////////////////////////
 				tableur.setValueAt(z[0], aligneur, 3);
