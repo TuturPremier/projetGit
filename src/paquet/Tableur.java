@@ -36,7 +36,7 @@ public class Tableur extends JFrame{
 
 		tableur.addColumn("DOSSIER");
 		tableur.addColumn("FICHIER");
-		tableur.addColumn("CLEF");
+		tableur.addColumn("CLEF/CHEMIN");
 		tableur.addColumn("TYPE");
 
 		tableur.setRowCount(500);
@@ -73,8 +73,10 @@ public class Tableur extends JFrame{
 		
 		
 		IOuvrir.addActionListener(new ActionListener(){
+			
+			//permet l'ouverture du projet
 			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser dialogue = new JFileChooser(new File("Users"));
+				JFileChooser dialogue = new JFileChooser(new File("."));
 				String chemin = null;
 				File fichier;
 				String[] recupChemin = null;
@@ -82,11 +84,11 @@ public class Tableur extends JFrame{
 				if (dialogue.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
 					fichier = dialogue.getSelectedFile();
 					chemin = fichier.getPath();
-					recupChemin = chemin.split("clique ici");
+					recupChemin = chemin.split("clique ici");//permet de recuperer le repertoire ça presence est OBLIGATOIRE
 
 				}
 				setVisible(false);
-				recupChemin[0]=recupChemin[0]+"/.git/objects";
+				recupChemin[0]=recupChemin[0]+"/.git/objects";//acces au dossier Objects
 
 				Rechercher finder = new Rechercher();
 				try {

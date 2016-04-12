@@ -21,20 +21,20 @@ public class Rechercher extends Tableur {
 
 		int aligneur=0;
 
-		for(int i=0 ; i<fichier.length-1; i++){
-			File[] interfichier = fichier[i].listFiles();
+		for(int i=0 ; i<fichier.length-1; i++){//ICI LE -1 POUR NE PAS PRENDRE LE PACK
+			File[] interfichier = fichier[i].listFiles();//interfichier liste les sous fichiers de fichier
 			tableur.setValueAt(fichier[i].getName(), aligneur, 0);
 
 
 
 			for(int j=0 ; j<interfichier.length; j++){
-				String cleff;
 
-				cleff=fichier[i].getName()+interfichier[j].getName();
+				//String cleff=fichier[i].getName()+interfichier[j].getName();
+				//Permet la concatenation du nom du dossier avec le(s) fichier(s) qu'il contient(s)
 				File file= new File(interfichier[j].getPath());
 
 				tableur.setValueAt(interfichier[j].getName(), aligneur, 1);
-				tableur.setValueAt(file, aligneur, 2);
+				tableur.setValueAt(file, aligneur, 2);//permet de stocker le chemin (utile pour la partie information)
 
 				//decompression et remplisage de la table (colone 2 et 3)
 				/////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ public class Rechercher extends Tableur {
 
 		table.addMouseListener(new MouseAdapter() {
 			
-			//decompression egalement par rapport a la colonne 2 
+			//decompression egalement par rapport à la colonne 2 
 			
 			public void mouseClicked(MouseEvent event) { 
 				int ligne=event.getY()/20;
@@ -126,12 +126,11 @@ public class Rechercher extends Tableur {
 					i1++;
 				}
 				
-				
+				////FENETRE POP UP/////
 
 				JOptionPane jop1;
-				//Boîte du message d'information
 				jop1 = new JOptionPane();
-				jop1.showMessageDialog(null, content, "Information>>>", JOptionPane.PLAIN_MESSAGE);
+				jop1.showMessageDialog(null, content, "<<<Information>>>", JOptionPane.PLAIN_MESSAGE);
 
 			} });
 

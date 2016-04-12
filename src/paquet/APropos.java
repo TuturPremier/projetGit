@@ -5,11 +5,12 @@ import java.io.*;
 import javax.swing.JOptionPane;
 
 public class APropos {
+	// affiche le fichier readme dans un pop up pour informer l'utilisteur
 	public APropos(){
 		String chaine="";
 		String fichier ="README.md";
 
-		//lecture du fichier texte	
+		//lecture du fichier Readme	
 		try{
 			InputStream ips=new FileInputStream(fichier); 
 			InputStreamReader ipsr=new InputStreamReader(ips);
