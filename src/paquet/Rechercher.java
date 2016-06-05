@@ -21,16 +21,18 @@ public class Rechercher extends Tableur {
 
 		int aligneur=0;
 
-		for(int i=0 ; i<fichier.length-1; i++){//ICI LE -1 POUR NE PAS PRENDRE LE PACK
+		for(int i=0 ; i<fichier.length; i++){//ICI LE -1 POUR NE PAS PRENDRE LE PACK
 			File[] interfichier = fichier[i].listFiles();//interfichier liste les sous fichiers de fichier
 			tableur.setValueAt(fichier[i].getName(), aligneur, 0);
-
-
+			
+			
+			if(fichier[i].getName().equals("pack")){
+				
+			}
 
 			for(int j=0 ; j<interfichier.length; j++){
 
-				//String cleff=fichier[i].getName()+interfichier[j].getName();
-				//Permet la concatenation du nom du dossier avec le(s) fichier(s) qu'il contient(s)
+
 				File file= new File(interfichier[j].getPath());
 
 				tableur.setValueAt(interfichier[j].getName(), aligneur, 1);
@@ -65,28 +67,28 @@ public class Rechercher extends Tableur {
 					content.append(c);
 					i1++;
 				}
-				
+
 				String[] z=content.toString().split(" ");//permet de recuper le premier mot qui correspont au type
 
 				/////////////////////////////////////////////////////////////////
 				tableur.setValueAt(z[0], aligneur, 3);
 
-				
+
 				aligneur++;
 			}
 
 		}
 
 		table.addMouseListener(new MouseAdapter() {
-			
+
 			//decompression egalement par rapport à la colonne 2 
-			
+
 			public void mouseClicked(MouseEvent event) { 
 				int ligne=event.getY()/20;
-				
+
 				File file=(File) tableur.getValueAt( ligne, 2);
-				
-				
+
+
 				FileInputStream fichier1 = null;
 				try {
 					fichier1 = new FileInputStream(file);
@@ -125,7 +127,7 @@ public class Rechercher extends Tableur {
 					content.append(c);
 					i1++;
 				}
-				
+
 				////FENETRE POP UP/////
 
 				JOptionPane jop1;

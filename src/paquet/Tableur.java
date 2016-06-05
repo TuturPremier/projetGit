@@ -21,6 +21,7 @@ public class Tableur extends JFrame{
 	
 	JTable table;
 	DefaultTableModel tableur;
+	
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu JFichier = new JMenu("Fichier");
 	private JMenu JOuvrir = new JMenu("Ouvrir sous");

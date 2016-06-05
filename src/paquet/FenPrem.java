@@ -19,7 +19,7 @@ public class FenPrem extends JFrame {
 
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu JFichier = new JMenu("Fichier");
-	
+
 	private JMenu JOuvrir = new JMenu("Ouvrir sous");
 	private JMenu JPropos = new JMenu("A propos");
 	private JMenuItem IOuvrir = new JMenuItem("Ouvrir");
@@ -28,41 +28,41 @@ public class FenPrem extends JFrame {
 
 	public FenPrem() {
 		// TODO Auto-generated constructor stub
-		
-		
+
+
 		JFichier.add(IOuvrir);
 		menuBar.add(JFichier);
 		JPropos.add(IPropos);
 		menuBar.add(JPropos);
 		setJMenuBar(menuBar);
-		
-		
+
+
 		this.JFichier.add(IQuitter);
 
-		
-		
-		
-		IOuvrir.addActionListener(new ActionListener(){
-			
-			//permet l'ouverture d'un fichier mais avec Windows car méthode differente
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser dialogue = new JFileChooser(new File("."));
-				String chemin = null;
-				File fichier;
-				String[] recupChemin = null;
 
-				if (dialogue.showOpenDialog(null)== JFileChooser.APPROVE_OPTION) {
+
+
+		IOuvrir.addActionListener(new ActionListener(){
+
+			//permet l'ouverture d'un fichier mais avec Windows car méthode differente
+
+			public void actionPerformed(ActionEvent arg0) {
+
+				JFileChooser dialogue = new JFileChooser(new File("Users"));
+				dialogue.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				File fichier = null;
+				if (dialogue.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 					fichier = dialogue.getSelectedFile();
-					chemin = fichier.getPath();
-					recupChemin = chemin.split("clique ici");
 
 				}
 				setVisible(false);
-				recupChemin[0]=recupChemin[0]+"/.git/objects";
 
 				Rechercher finder = new Rechercher();
 				try {
-					finder.rechercheFichier(recupChemin[0]);
+					File objDir = new File(new File(fichier, ".git"), "objects");
+					if (objDir.exists() && objDir.isDirectory()) {
+						finder.rechercheFichier(objDir.getAbsolutePath());
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -70,15 +70,15 @@ public class FenPrem extends JFrame {
 
 			}        
 		});
-		
-		
+
+
 		IQuitter.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				System.exit(0);
 
 			}        
 		});
-		
+
 		IPropos.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				new APropos();
